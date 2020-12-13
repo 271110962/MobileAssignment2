@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/splash"
+    tools:context=".MainActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="120dp"
+        android:paddingLeft="110dp">
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:text="Memo"
+            android:textColor="#ffffff"
+            android:textSize="60sp"
+            android:textAllCaps="true"/>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="90dp"
+        android:paddingLeft="44dp"
+        android:paddingRight="44dp">
+        <Button
+            android:id="@+id/Loginbtn"
+            android:layout_width="100dp"
+            android:layout_height="55dp"
+            android:text="@string/login_button"
+            android:textColor="#ffffff"
+            android:backgroundTint="@color/login_color"
+            android:textSize="20sp"
+            android:textAllCaps="false"
+            android:layout_alignParentLeft="true"/>
+
+        <Button
+            android:id="@+id/Registerbtn"
+            android:layout_width="150dp"
+            android:layout_height="55dp"
+            android:text="@string/register_button"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:textAllCaps="false"
+            android:backgroundTint="@color/register_color"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+
+</RelativeLayout>
