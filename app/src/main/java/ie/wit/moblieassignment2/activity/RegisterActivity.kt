@@ -7,12 +7,16 @@ import android.widget.Toast
 import ie.wit.moblieassignment2.R
 import ie.wit.moblieassignment2.database.MyDatabaseHelper
 import kotlinx.android.synthetic.main.activity_register.*
-
+/*
+*
+* Register Page:
+*   Register Function
+ */
 class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
-
+        //Register button listener
         btn_register.setOnClickListener(){
             val username = RegisterUser.text?.trim().toString()
             val password = RegisterPassword.text?.trim().toString()
@@ -21,7 +25,7 @@ class RegisterActivity : AppCompatActivity() {
         }
 
     }
-
+    //Register logic
     private fun register(username:String, password:String, databaseHandler: MyDatabaseHelper){
         if(username.isBlank() || username.isEmpty()){
             Toast.makeText(this,"Please Enter Your Username", Toast.LENGTH_SHORT).show()
@@ -31,6 +35,7 @@ class RegisterActivity : AppCompatActivity() {
             Toast.makeText(this,"Please Enter Your Password", Toast.LENGTH_SHORT).show()
             return
         }
+        //check if there is same username used by other users
         val count = databaseHandler.checkRepeatUsername(username)
         if (count != null) {
             if(count > 0){

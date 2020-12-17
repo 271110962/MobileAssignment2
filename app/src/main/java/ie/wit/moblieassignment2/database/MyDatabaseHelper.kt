@@ -25,7 +25,7 @@ class MyDatabaseHelper(context: Context?) : SQLiteOpenHelper(context,DATABASE_NA
      private val CATEGORY = "category"
  }
 
-
+    //Two tables, User is for login and register management. Memo is for memo management.
     override fun onCreate(db: SQLiteDatabase?) {
         val CREATE_CONTACTS_TABLE1 = ("CREATE TABLE " + TABLE_CONTACTS1 + "("
                 + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "

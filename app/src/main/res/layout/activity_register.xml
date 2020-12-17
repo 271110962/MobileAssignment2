@@ -48,7 +48,7 @@
                     android:hint="@string/login_account_hint"
                     android:textColor="#000000"
                     android:maxLength="20"
-                    android:text="Jinyu"
+                    android:text=""
                     android:textColorHint="#bcbcbc"
                     android:textSize="18sp" />
             </LinearLayout>
@@ -78,7 +78,7 @@
                     android:layout_marginLeft="20dp"
                     android:background="@null"
                     android:maxLength="20"
-                    android:text="123456"
+                    android:text=""
                     android:inputType="textPassword"
                     android:hint="@string/login_password_hint"
                     android:textColor="#000000"

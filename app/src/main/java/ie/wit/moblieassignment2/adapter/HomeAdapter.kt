@@ -39,14 +39,16 @@ class HomeAdapter constructor(private var memos: ArrayList<MemoModel>,
         val memo = mFilterList[holder.adapterPosition]
         holder.bind(memo, listener,context)
     }
-
+    //implemented by the filterable interface. It can bind the search box and filtering the list by memo title.
     override fun getFilter(): Filter {
         return object : Filter(){
             override fun performFiltering(p0: CharSequence?): FilterResults {
+                //Nothing in the search box will return completed list
                 val charString = p0.toString()
                 if(charString.isEmpty()){
                     mFilterList = memos
                 }else{
+                    //otherwise return the list which contains the memo title
                     var filteredList = ArrayList<MemoModel>()
                     for(i in memos){
                         if(i.title.contains(charString)){

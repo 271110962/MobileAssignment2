@@ -16,7 +16,9 @@ import ie.wit.moblieassignment2.listener.MemoListener
 import ie.wit.moblieassignment2.models.MemoModel
 import kotlinx.android.synthetic.main.fragment_others.*
 import org.jetbrains.anko.support.v4.intentFor
-
+/*
+*Fragment for showing memos which is Others category
+ */
 private const val ARG_PARAM1 = "user"
 private const val ARG_PARAM2 = "category"
 class OthersFragment : Fragment(), MemoListener {

@@ -17,17 +17,23 @@ import ie.wit.moblieassignment2.fragment.*
 import ie.wit.moblieassignment2.models.UserModel
 import kotlinx.android.synthetic.main.activity_home.*
 
-
+/*
+*This is a page for collecting all the memos: filtering search function here.
+ */
 class HomeActivity : AppCompatActivity() {
-
+    //Tab titles name
     private val tabTitles = arrayOf("HomePage", "Study","Life","Others")
+    //Tab clicked images and nonclick images
     private val tabIconNonClicked = intArrayOf(
         R.mipmap.home_nonclicked, R.mipmap.book,R.mipmap.me_nonclicked,R.mipmap.idea
     )
     private val tabIconClicked = intArrayOf(
         R.mipmap.home_clicked, R.mipmap.book,R.mipmap.me_clicked,R.mipmap.idea
     )
+
+    //List to store the Fragments
     private val tabFragments = arrayListOf<Fragment>()
+    //List to store the Tab Entities(Name, clicked image, unclicked Image)
     private val tabEntities = arrayListOf<CustomTabEntity>()
 
     private var databaseHelper: MyDatabaseHelper = MyDatabaseHelper(this)
@@ -43,7 +49,7 @@ class HomeActivity : AppCompatActivity() {
         val headerLayout: View = nav_view.inflateHeaderView(R.layout.nav_header)
         val header = headerLayout.findViewById<TextView>(R.id.headerName)
         header.text = userLoginName
-
+        // Navigation Drawer Listener
         nav_view.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.nav_add -> {
@@ -61,18 +67,18 @@ class HomeActivity : AppCompatActivity() {
         }
 
 
-
+        //The list of Fragments must store all the corresponding Fragments
         tabFragments.add(HomeFragment.newInstance(userLoginName))
         tabFragments.add(StudyFragment.newInstance(userLoginName,"Study"))
         tabFragments.add(LifeFragment.newInstance(userLoginName,"Life"))
         tabFragments.add(OthersFragment.newInstance(userLoginName,"Others"))
 
-
+        //The list of Tab Entities must store all the corresponding entities
         for(i in tabTitles.indices){
             val newTab = TabEntity(tabTitles[i],tabIconClicked[i],tabIconNonClicked[i])
             tabEntities.add(newTab)
         }
-
+        //CommonTabLayout initialize the tab entities and listener.
         commonTabLayout.setTabData(tabEntities)
         commonTabLayout.setOnTabSelectListener(object : OnTabSelectListener {
             override fun onTabSelect(position: Int) {
@@ -82,7 +88,7 @@ class HomeActivity : AppCompatActivity() {
             override fun onTabReselect(position: Int) {}
         })
 
-
+        //adapter to actually initialize the layout.
         viewpager.adapter = PageAdapter(supportFragmentManager,tabTitles,tabFragments)
     }
 

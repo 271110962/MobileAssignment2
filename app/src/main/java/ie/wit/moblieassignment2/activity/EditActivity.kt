@@ -10,7 +10,9 @@ import ie.wit.moblieassignment2.models.MemoModel
 import kotlinx.android.synthetic.main.activity_edit.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
-
+/*
+*This is a page for edit memos: it has delete, add, update, exit functions.
+ */
 class EditActivity : AppCompatActivity(),AnkoLogger{
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +28,7 @@ class EditActivity : AppCompatActivity(),AnkoLogger{
         }
 
 
-
+        //user enter when they click the cardview
         if(intent.hasExtra("updateMemo")){
             edit = true
             memoDelete = intent.extras?.getParcelable<MemoModel>("updateMemo")!!
@@ -44,7 +46,7 @@ class EditActivity : AppCompatActivity(),AnkoLogger{
             edit_save.setImageResource(R.mipmap.update)
             edit_delete.show()
         }
-
+        //delete button listener
         edit_delete.setOnClickListener(){
                 Snackbar.make(it, "Are you sure you want to Delete?", Snackbar.LENGTH_LONG)
                         .setAction("Yes") {
@@ -58,13 +60,13 @@ class EditActivity : AppCompatActivity(),AnkoLogger{
                         .show()
         }
 
-
+        //add function listener
         edit_save.setOnClickListener(){
             val title = MemoTitle.text.toString()
             val category = spinner.selectedItem.toString()
             val description = MemoDescription.text.toString()
             if(title.isNotEmpty() && category.isNotEmpty() && description.isNotEmpty()){
-
+                //update status
               if(edit){
                   val id = memoDelete!!.id
                   val memo = MemoModel(id, title, category, description, username!!)
@@ -73,6 +75,7 @@ class EditActivity : AppCompatActivity(),AnkoLogger{
                   Toast.makeText(this, "Update Successfully", Toast.LENGTH_SHORT).show()
                   finish()
               }else {
+                  //add status
                   val memo = MemoModel(null, title, category, description, username!!)
                   databaseHelper.addMemo(memo)
                   info("Memo Create: $memo")
@@ -84,7 +87,7 @@ class EditActivity : AppCompatActivity(),AnkoLogger{
                 Toast.makeText(this,"You have something wrong with it",Toast.LENGTH_SHORT).show()
             }
         }
-
+        //cancel and exit button listener
         edit_cancel.setOnClickListener(){
             Snackbar.make(it, "Are you sure you want to Leave?", Snackbar.LENGTH_LONG)
                 .setAction("Yes") {
