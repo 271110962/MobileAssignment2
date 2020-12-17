@@ -14,6 +14,7 @@
     android:background="#ffffff"
     tools:context=".activity.HomeActivity">
 
+
     <ie.wit.moblieassignment2.MyViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
@@ -44,4 +45,6 @@
         android:layout_gravity="start"
         app:menu="@menu/nav_menu"
         app:headerLayout="@layout/nav_header"/>
+
+
 </androidx.drawerlayout.widget.DrawerLayout>
